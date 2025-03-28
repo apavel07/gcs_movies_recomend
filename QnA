@@ -1,0 +1,19 @@
+
+3. В таблице `mware-data.mware.events_media_play_1` много документов имеют формат "vod/xxxx/yyyy"
+Но есть documents c "vod/xxxx", т.е. без экземляра фильма или серии. Что это означает?
+
+4. В таблице `mware-data.mware.events_media_play_1` есть документы у которых совпадает третья часть "vod/xxxx/yyyy"
+Но не совпадает вторая часть. Это означает, что третья часть это не уникальный идентификатор. Это верно?
+Пример:
+
+WITH t AS (
+  SELECT
+    distinct
+    SPLIT(JSON_VALUE(documents, "$[0].id"), "/")[SAFE_OFFSET(1)] AS part2,
+    SPLIT(JSON_VALUE(documents, "$[0].id"), "/")[SAFE_OFFSET(2)] AS part3
+  from `mware-data.mware.events_media_play_1`
+)
+SELECT part2, t.part3
+FROM t
+WHERE part3 = '391293'
+

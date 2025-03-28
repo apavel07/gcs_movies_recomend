@@ -1,0 +1,1 @@
+Field "document.id" must match the pattern: [a-zA-Z0-9][a-zA-Z0-9-_]*. Got vod/536/2336.
