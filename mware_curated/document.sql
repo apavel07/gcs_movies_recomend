@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW mware_curated.movies_view
+CREATE OR REPLACE VIEW mware_curated.document
 AS
 SELECT DISTINCT
     CAST(id_content AS STRING) as id,
@@ -6,6 +6,7 @@ SELECT DISTINCT
     null as parentDocumentId,
     TO_JSON_STRING(STRUCT(
         SUBSTR(title, 0, 1000) as title,
+        description as description,
         categories as categories,
         CONCAT("vod/", id_content) as uri,
         "2023-01-01T00:00:00Z" as available_time,

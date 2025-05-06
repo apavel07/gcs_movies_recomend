@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW mware_curated.view_category_page
+CREATE OR REPLACE VIEW mware_curated.event_view_category_page
 AS
 SELECT
     CAST(userPseudoId AS STRING) userPseudoId,
@@ -6,4 +6,4 @@ SELECT
     eventTime,
     STRUCT( category AS pageCategory) AS pageInfo
 FROM mware.events_view_video_category_1
-LIMIT 2
+

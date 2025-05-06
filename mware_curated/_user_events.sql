@@ -48,8 +48,3 @@ search_ AS (
     FROM mware.events_search_2 AS evv
     LIMIT 2
 )
-SELECT * FROM view_item
-UNION ALL
-SELECT * FROM view_category_page
-UNION ALL
-SELECT * FROM search_
