@@ -1,60 +1,114 @@
-results {
-  id: "35866"
-}
-results {
-  id: "35805"
-}
-results {
-  id: "35861"
-}
-results {
-  id: "35862"
-}
-results {
-  id: "35985"
-}
-results {
-  id: "37390"
-}
-results {
-  id: "36410"
-}
-results {
-  id: "32191"
-}
-results {
-  id: "38565"
-}
-results {
-  id: "35858"
-}
-results {
-  id: "38494"
-}
-results {
-  id: "38513"
-}
-results {
-  id: "35801"
-}
-results {
-  id: "35854"
-}
-results {
-  id: "38545"
-}
-results {
-  id: "25430"
-}
-results {
-  id: "35857"
-}
-results {
-  id: "35809"
-}
-results {
-  id: "35797"
-}
-results {
-  id: "35981"
-}
+[
+  {
+    "name": "eventType",
+    "type": "STRING",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "userPseudoId",
+    "type": "STRING",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "eventTime",
+    "type": "STRING",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "userInfo",
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "fields": [
+      {
+        "name": "userId",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+      {
+        "name": "userAgent",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      }
+    ]
+  },
+  {
+    "name": "pageInfo",
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "fields": [
+      {
+        "name": "pageviewId",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+      {
+        "name": "uri",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+      {
+        "name": "referrerUri",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      }
+    ]
+  },
+  {
+    "name": "attributionToken",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "documents",
+    "type": "RECORD",
+    "mode": "REPEATED",
+    "fields": [
+      {
+        "name": "id",
+        "type": "STRING",
+        "mode": "NULLABLE"
+      },
+      {
+        "name": "quantity",
+        "type": "INT64",
+        "mode": "NULLABLE"
+      }
+    ]
+  },
+  {
+    "name": "tagIds",
+    "type": "STRING",
+    "mode": "REPEATED"
+  },
+  {
+    "name": "attributes",
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "fields": [
+      {
+        "name": "example_text_attribute",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+          {
+            "name": "text",
+            "type": "STRING",
+            "mode": "REPEATED"
+          }
+        ]
+      },
+      {
+        "name": "example_number_attribute",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+          {
+            "name": "numbers",
+            "type": "NUMERIC",
+            "mode": "REPEATED"
+          }
+        ]
+      }
+    ]
+  }
+]

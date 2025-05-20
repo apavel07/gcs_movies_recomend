@@ -1,6 +1,16 @@
+-- id - Episode (unique id)
+-- id_content - Season or Movie
+-- uri - vod/Season/Episode
+
+
+
 CREATE OR REPLACE VIEW mware_curated.document
 AS
-SELECT DISTINCT
+WITH t AS (
+    SELECT *, ROW_NUMBER() OVER(PARTITION BY id_content ORDER BY 1) AS _rn
+    FROM mware.vod_content
+)
+SELECT
     CAST(id_content AS STRING) as id,
     "default_schema" as schemaId,
     null as parentDocumentId,
@@ -13,22 +23,9 @@ SELECT DISTINCT
         "2033-01-01T00:00:00Z" as expire_time,
         "movie" as media_type
     )) as jsonData
-FROM mware.vod_content
+FROM t
+WHERE _rn = 1
 
-
---SELECT
---    uri as id,
---    "default_schema" as schemaId,
---    null as parentDocumentId,
---    TO_JSON_STRING(STRUCT(
---        SUBSTR(title, 0, 1000) as title,
---        categories as categories,
---        CONCAT("http://mware.movie/", uri) as uri,
---        "2023-01-01T00:00:00Z" as available_time,
---        "2033-01-01T00:00:00Z" as expire_time,
---        "movie" as media_type
---    )) as jsonData
---from mware.vod_content
 
 
 --https://cloud.google.com/generative-ai-app-builder/docs/media-documents#json-schema
